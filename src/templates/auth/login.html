@@ -1,0 +1,72 @@
+{% extends './base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename= 'css/login.css')}}">
+{% endblock %}
+{% if messages %}
+<br/>
+{% for message in messages %}
+<div class="alert alert-primary alert-dismissible" role="alert">
+  <strong>{{ message }}</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% block body %}
+  <form class="form-signin" action=" /login" method="POST">
+    <img class="mb-4" src="{{ url_for('static', filename= 'img/120px-Python.png') }}" alt="" width="72" height="72">
+    {% with messages= get_flashed_messages() %}
+
+    {% endwith %}
+    <h1 class="h3 mb-3 font-weight-normal">Ingresar tus Datos</h1>
+    <div class="form-floating">
+      <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+      <label for="username"></label>
+  </div>
+  <div class="form-floating mt-2">
+      <input type="password" class="form-control" id= "password" name="password" placeholder="Password">
+      <label for="password"></label>
+  </div>
+      <label>
+        <input type="checkbox" value="remembre-me"> Recuerdame
+      </label>
+    </div>
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Logearse</button>
+    <p class="mt-5 mb-3 text-muted">&reg; Kenoxys-2023.Reservados todos los derechos. Diseñado por: Rogers Acosta</p>
+    <!--<div class="container-fluid pt-3" style="border-top: 1px solid rgba(23, 162, 184, .2);">
+      <p class="m-0 text-center text-muted">
+        &reg; Kenoxys-2023. Reservados todos los derechos. Diseñado por<a class="text-primary font-weight-bold" href="https://twitter.com/kenoxys54859">Rogers Acosta</a>
+      </p>
+    </div>-->
+  </form>
+ {% endblock %}
+
+ <form class="form-signin" action="/login" method="POST">
+  <img class="mb-4" src="{{ url_for('static', filename='img/logo.png') }}" alt="" width="100" height="60">
+  {% with messages = get_flashed_messages() %}
+
+  {% if messages %}
+  <br />
+  {% for message in messages %}
+  <div class="alert alert-primary alert-dismissible" role="alert">
+      <strong>{{ message }}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+  {% endif %}
+
+  {% endwith %}
+  <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <div class="form-floating">
+      <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+      <label for="username">Username</label>
+  </div>
+  <div class="form-floating mt-2">
+      <input type="password" class="form-control" name="password" placeholder="Password">
+      <label for="password">Password</label>
+  </div>
+  <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+</form>
