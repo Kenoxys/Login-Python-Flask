@@ -4,8 +4,8 @@ class Config:
 class DevelopmentConfig(Config):
     DEBUG=True
     MYSQL_HOST= 'localhost'
-    MYSQL_USER= 'root'
-    MYSQL_PASSWORD= '16416913'
+    MYSQL_USER= 'MYSQL-USER'
+    MYSQL_PASSWORD= 'MYSQL-PASSWORD'
     MYSQL_DB= 'flask-login'
 
 config={
